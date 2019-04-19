@@ -43,7 +43,6 @@ class Detail extends Component {
           casts: castRes.data.cast,
           ready: true
         })
-        console.log(movieRes.data)
       }))
       .catch((err) => {
         console.log(err)

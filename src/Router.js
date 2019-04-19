@@ -12,6 +12,7 @@ const Detail = asyncComponent(() => import('./pages/Detail'))
 const CastDetail = asyncComponent(() => import('./pages/CastDetail'))
 const Login = asyncComponent(() => import('./pages/Login'))
 const Registration = asyncComponent(() => import('./pages/Register'))
+const ErrorPage = asyncComponent(() => import('./pages/404'))
 
 
 
@@ -28,6 +29,7 @@ export default class Router extends Component {
               <Route path='/castdetail/:id' component={hashTracker(CastDetail)} />
               <Route exact path='/login' component={hashTracker(Login)} />
               <Route exact path='/register' component={hashTracker(Registration)} />
+              <Route path='*' exact={true} component={ErrorPage} />
             </Switch>
           </div>
           <Footer />

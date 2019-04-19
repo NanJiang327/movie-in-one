@@ -24,6 +24,7 @@
   }
 
   .menu {
+    height: 64px;
     font-size: 16px;
     background: rgba(245,255,255, 0.1);
     div {
@@ -32,6 +33,7 @@
     .menu-left {
       width: 33.3333%;
       .icon-font {
+        margin-right: 10px;
         font-size: 20px;
       }
       a {
@@ -50,15 +52,22 @@
       a {
         padding: 20px;
       }
-    }
 
-    .icon-font {
-      margin-right: 10px;
-    }
+      .dropdown-menu {
+        cursor: pointer;
+        padding: 20px;
+        height: 64px;
+      }
 
-    .login-btn {
-      &:hover {
-        background-color: $blue;
+      .icon-font {
+        margin-right: 10px;
+      }
+
+      .login-btn {
+        margin-right: 5px;
+        &:hover {
+          background-color: $blue;
+        }
       }
     }
   }

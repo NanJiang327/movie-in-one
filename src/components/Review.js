@@ -32,7 +32,6 @@ class Review extends Component {
     const api = config.tmdb.basicUrl + props.movieId + '/reviews?api_key=' + config.tmdb.apiKey
     axios.get(api)
      .then((res) => {
-       console.log(res.data.results)
        this.setState({
          reviews: res.data.results,
          ready: true

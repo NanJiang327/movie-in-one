@@ -42,11 +42,11 @@ class Header extends Component {
               <IconFont name={'acc'} className='movie-title'/>
               Login
             </Link>
-            <Dropdown overlay={menu}>
-              <Link className="ant-dropdown-link" to="#">
+            <Dropdown overlay={menu} className="dropdown-menu">
+              <div className="ant-dropdown-link" >
                 <IconFont name={'lang'} className='movie-title'/>
                 Language<Icon type="down" />
-              </Link>
+              </div>
             </Dropdown>
             </div>
         </div>
