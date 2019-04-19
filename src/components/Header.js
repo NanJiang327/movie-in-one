@@ -9,7 +9,6 @@ import { changeLang } from '../store/action'
 class Header extends Component {
 
   onClick = ({ key }) => {
-    console.log(key)
     this.props.changeLang(key)
   };
 
