@@ -6,7 +6,15 @@ const defaultState = {
   nowShowingArr: [],
   upcomingArr: [],
   type: 'now_playing',
-  language: 'en-AU'
+  language: 'en-AU',
+  user: {
+    logged: false,
+    username: '',
+    email: '',
+    userId: ''
+  },
+  redirectTo: '',  
+  errorMsg: ''
 }
 
 export default (state = defaultState, action) => {
@@ -49,6 +57,54 @@ export default (state = defaultState, action) => {
       })
       return Object.assign({}, state, {
         language: action.language
+      })
+    case constants.REGISTER:
+      return Object.assign({}, state, {
+        user: {
+          logged: true,
+          username: action.payload.username,
+          email: action.payload.email,
+          usrId: action.payload['_id'],
+        },
+        language: action.payload.language
+      })
+    case constants.SET_REDIRECT:
+      return Object.assign({}, state, {
+        redirectTo: action.redirectTo
+      })
+    case constants.ERROR_MESSAGE:
+      return Object.assign({}, state, {
+        errorMsg: action.err
+      })
+    case constants.LOGIN:
+      return Object.assign({}, state, {
+        user: {
+          logged: true,
+          username: action.payload.username,
+          email: action.payload.email,
+          userId: action.payload['_id']
+        },
+        language: action.payload.language
+      })
+    case constants.LOGOUT:
+      return Object.assign({}, state, {
+        user: {
+          logged: false,
+          username: '',
+          email: '',
+          userId: ''
+        },
+        language: 'en-AU'
+      })
+    case constants.LOAD_DATA:
+      return Object.assign({}, state, {
+        user: {
+          logged: true,
+          username: action.payload.username,
+          email: action.payload.email,
+          userId: action.payload['_id']
+        },
+        language: action.payload.language
       })
     default: 
       return state
