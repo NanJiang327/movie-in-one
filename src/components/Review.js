@@ -1,50 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Loading from './Loading'
-import axios from 'axios'
 import {
   Comment, List, Avatar
 } from 'antd';
 
-import config from '../utils/config'
-
-
 class Review extends Component {
-  constructor() {
-    super()
-    this.state = {
-      ready: false,
-      reviews: []
-    }
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (JSON.stringify(this.props) === JSON.stringify(nextProps)) return
-    this.setState({ ready: false })
-    this.fetchReview(nextProps)
-  }
-
-  componentDidMount () {
-    this.fetchReview(this.props)
-  }
-
-  fetchReview (props) {
-    const api = config.tmdb.basicUrl + props.movieId + '/reviews?api_key=' + config.tmdb.apiKey
-    axios.get(api)
-     .then((res) => {
-       this.setState({
-         reviews: res.data.results,
-         ready: true
-       })
-     }).catch(err => {
-       console.log(err)
-     })
-  }
-
-  
-
   render () {
-    if (!this.state.ready) return <Loading />
+    if (!this.props.ready) return <Loading />
     return (
       <div>
         {
@@ -52,7 +15,7 @@ class Review extends Component {
             className="comment-list"
             header={'Reviews'}
             itemLayout="horizontal"
-            dataSource={this.state.reviews}
+            dataSource={this.props.reviews}
             renderItem={item => (
               <Comment
                 author={<a href={item.url}>{item.author}</a>}
@@ -76,7 +39,8 @@ class Review extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    language: state.language
+    language: state.language,
+    user: state.user
   }
 }
 
