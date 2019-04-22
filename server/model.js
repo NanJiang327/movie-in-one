@@ -1,6 +1,14 @@
 const mongoose = require('mongoose')
 // Connect mongodb
-const DB_URL = 'mongodb://localhost:27017/movie-in-one'
+// const DB_URL = 'mongodb://localhost:27017/movie-in-one'
+
+const uri = "mongodb+srv://j499521010:123.comwyxx@cluster0-s97y5.mongodb.net/test?retryWrites=true";
+// const client = new MongoClient(uri, { useNewUrlParser: true });
+// client.connect(err => {
+//   const collection = client.db("test").collection("devices");
+//   // perform actions on the collection object
+//   client.close();
+// });
 
 const models = {
   user: {
@@ -34,7 +42,7 @@ for (let m in models) {
 //   }
 // })
 
-mongoose.connect(DB_URL, { useNewUrlParser: true });
+mongoose.connect(uri, { useNewUrlParser: true });
 mongoose.connection.on('connected', function(){
   console.log('mongo connect success')
 })

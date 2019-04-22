@@ -20,7 +20,9 @@ app.use(cors());
 //     next();
 // });
 
-app.use(express.static(path.join(__dirname, "client/build")))
+app.use(express.static(path.join(__dirname, "../build")))
+
+console.log(path.join(__dirname, "../build"))
 
 app.use(cookieParser())
 app.use(session({
@@ -37,6 +39,6 @@ app.use('/user', userRouter)
 app.use('/comment', commentRouter)
 
 
-app.listen(3001, function(){
+app.listen(5001, function(){
   console.log('Node app start at port 3001')
 })
